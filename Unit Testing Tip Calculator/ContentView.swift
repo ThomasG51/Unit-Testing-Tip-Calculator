@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    // MARK: - Property
+    
+    let tipCalculator = TipCalculator()
+    
     // MARK: - Binding
     
     @State private var total: String = ""
@@ -37,8 +41,10 @@ struct ContentView: View {
                 }
                 .pickerStyle(.segmented)
 
-                Button("Calculate Tip") {}
-                    .padding(.top, 20)
+                Button("Calculate Tip") {
+                    calculateTip()
+                }
+                .padding(.top, 20)
                         
                 Text(message)
                     .padding(.top, 50)
@@ -56,6 +62,33 @@ struct ContentView: View {
     }
     
     // MARK: - View Function
+    
+    private func calculateTip() {
+        clearUI()
+        
+        guard let total = Double(total) else {
+            message = "Invalid Input"
+            return
+        }
+        
+        do {
+            let result = try tipCalculator.calculate(total: total, percentage: tipPercentage)
+            
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            
+            tip = formatter.string(from: NSNumber(value: result))
+        } catch TipCalculatorError.invalidInput {
+            message = "Invalid Input"
+        } catch {
+            message = error.localizedDescription
+        }
+    }
+    
+    private func clearUI() {
+        message = ""
+        tip = ""
+    }
 }
 
 // MARK: - Preview

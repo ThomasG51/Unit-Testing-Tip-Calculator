@@ -78,10 +78,10 @@
 		7EF55BCD296EDDA8005A7EF3 /* Unit Testing Tip Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				7EF55BEB296EDE87005A7EF3 /* Service */,
 				7EF55BCE296EDDA8005A7EF3 /* Unit_Testing_Tip_CalculatorApp.swift */,
-				7EF55BD0296EDDA8005A7EF3 /* ContentView.swift */,
 				7EF55BD2296EDDA9005A7EF3 /* Assets.xcassets */,
+				7EF55BD0296EDDA8005A7EF3 /* ContentView.swift */,
+				7EF55BEB296EDE87005A7EF3 /* Service */,
 				7EF55BD4296EDDA9005A7EF3 /* Preview Content */,
 			);
 			path = "Unit Testing Tip Calculator";
